@@ -19,3 +19,16 @@ from requests import get
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 import numpy as np
+
+#URL to Linkedin Jobs Page
+url="https://www.linkedin.com/jobs/"
+
+#requests for the results
+results = requests.get(url)
+
+#this is to make the content that we grabbed easier 
+# to read by using Beautiful Soup
+soup = bs(results.text, "html.parser")
+
+with open("output.txt", "w") as f:
+    f.write(soup.prettify())
